@@ -23,6 +23,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind(
+            'App\Interfaces\BusesLineInterface',
+            'App\Repositories\BusesLineRepository'
+        );
+        $this->app->bind(
+            'App\Interfaces\BusesLineStopInterface',
+            'App\Repositories\BusesLineStopRepository'
+        );
+        $this->app->bind(
+            'App\Interfaces\BusesLineRouteInterface',
+            'App\Repositories\BusesLineRouteRepository'
+        );
     }
 }

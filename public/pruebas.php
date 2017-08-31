@@ -1,5 +1,10 @@
 <?php
 
+use App\XML\ControllerBusLine;
+use App\BusesLine;
+use App\XML\CollectionBusLine;
+
+use App\XML\xmlBusFileParser;
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -21,7 +26,14 @@
 
 require __DIR__.'/../bootstrap/autoload.php';
 
-$a = App\XML\xmlBusFileParser::getInstance();
-
-
-var_dump($a->getBuses());
+$busesController = new ControllerBusLine(new CollectionBusLine(), xmlBusFileParser::getInstance());
+$busesLines = $busesController->getBusesCollector()->getCollection();
+echo count($busesLines);
+$a=0;
+foreach ($busesLines as $busLine) {
+    $busLine->id;
+    var_dump($busLine);
+    $a++;
+}
+$busLine->id;
+var_dump($busLine);

@@ -13,7 +13,8 @@ namespace App\XML;
  * @author nicore2000
  */
 class BusLine 
-{    
+{
+    public $id;
     private $linea;
     private $ramal;
     private $zona;
@@ -45,7 +46,10 @@ class BusLine
     }
 
     function getBusRoute() {
-        return $this->busRoute;
+        if (count($this->busRoute)>0)
+            return $this->busRoute;
+        
+        return null;
     }
     
     public function setBusStop($busStop) 
@@ -60,11 +64,11 @@ class BusLine
     
     public function addBusStop($arrParadas)
     {
-        $this->busStop = $arrParadas;
+        $this->busStop[] = $arrParadas;
     }
     
      public function addBusRoute($arrRoute)
     {
-        $this->busRoute = $arrRoute;
+        $this->busRoute[] = $arrRoute;
     }
 }

@@ -27,10 +27,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    ]);
 //});
 
-//    Route::get("buseslines/","BusesLineController@getLines");
-    Route::get("buseslines/{number}","BusesLineController@getLinesByNumber");
-    Route::get("buseslines/{number}/{letter}","BusesLineController@getLinesByNumberAndLetter");
-//    Route::get("buseslines/{id}","BusesLineController@getLinesById");
 
-    Route::get("buseslines","BusesLineController@index");
+    Route::get("buseslines",                        "BusesLineController@getLines");
+    Route::get("buseslines/{number}",               "BusesLineController@getLinesByNumber");
+    Route::get("buseslines/{number}/{letter}",      "BusesLineController@getLinesByNumberAndLetter");
+    Route::get("buseslines/id/{id}",                "BusesLineController@getLinesById");
+    
+    Route::get("all",                    "BusesLineController@getAllLines");
+    Route::get("buseslines/all/{number}",           "BusesLineController@getAllLinesByNumber");
+    Route::get("buseslines/all/{number}/{letter}",  "BusesLineController@getAllLinesByNumberAndLetter");
+    Route::get("buseslines/all/id/{id}",            "BusesLineController@getAllLinesById");
+    
+    
+    
 //});
