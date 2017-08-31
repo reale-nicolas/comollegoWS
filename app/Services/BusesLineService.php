@@ -112,13 +112,12 @@ class BusesLineService
     
     public function getAllLinesById($id)
     {
-        $busLines = $this->getLinesById($id);
+        $busLine = $this->getLinesById($id);
         
         $busLine->stops = $this->busLine->busesLineStop($busLine);
         $busLine->route = $this->busLine->busesLineRoute($busLine);
         
-        return  $busLines;
+        return  $busLine;
     }
-    
     
 }
