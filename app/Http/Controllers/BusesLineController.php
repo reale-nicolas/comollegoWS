@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ApiResponses\getLinesResponse;
 use App\Services\BusesLineService;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Routing\Controller;
 
 class BusesLineController extends Controller
 {
@@ -90,47 +89,10 @@ class BusesLineController extends Controller
     
     public function getAllLinesById($id)
     {
-        $arrLines=$this->busesLineService->getAllLinesById($id);
+        $arrLines = $this->busesLineService->getAllLinesById($id);
         
         return  response()
                 ->json($arrLines, 200)
                 ->withCallback('JSONPGetLinesCallback');
     }
-    
-   
-    
-    
-    public function index()
-    {
-        $dbResponse =  DB::select(''
-                . ' SELECT count(id) AS ramals_count, number, letter, GROUP_CONCAT( IF (zone = "", "-", zone)) AS zones '
-                . ' FROM   buses_lines '
-                . ' GROUP BY number, letter');
-        
-        $lineResponse = new getLinesResponse("getLines", $dbResponse);
-//        echo "<pre>";print_R($lineResponse->getFormattedResponse());echo "</pre>";
-        return  response()
-                ->json($lineResponse->getFormattedResponse(),200)
-                ->withCallback('JSONPcallback');
-         
-    }
-//    
-//    public function getLinesById($id)
-//    {
-//        return BusesLine::find($id);
-//    }
-//    
-//    public function getLinesByNumber($number)
-//    {
-//        return BusesLine::where('number', $number)->get();
-//    }
-//    
-//    public function getLinesByNumberAndLetter($number, $letter)
-//    {
-//        return BusesLine::where(
-//                array(
-//                    'number' => $number, 
-//                    'letter' => $letter)
-//        )->get();
-//    }
 }

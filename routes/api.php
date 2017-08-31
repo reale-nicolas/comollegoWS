@@ -15,29 +15,46 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-//Route::group(['middleware' => 'auth.basic'], function () {
-//    Route::get('buseslines/', function () {
-//        return redirect()->action('BusesLineController@index');
-//    ->withHeaders([
-//                  'Access-Control-Allow-Origin' => '*'
-//    ]);
-//});
+    Route::middleware('auth:api')->get('/user', function (Request $request) {
+        return $request->user();
+    });
 
 
-    Route::get("buseslines",                        "BusesLineController@getLines");
-    Route::get("buseslines/{number}",               "BusesLineController@getLinesByNumber");
-    Route::get("buseslines/{number}/{letter}",      "BusesLineController@getLinesByNumberAndLetter");
-    Route::get("buseslines/id/{id}",                "BusesLineController@getLinesById");
-    
-    Route::get("all",                    "BusesLineController@getAllLines");
-    Route::get("buseslines/all/{number}",           "BusesLineController@getAllLinesByNumber");
-    Route::get("buseslines/all/{number}/{letter}",  "BusesLineController@getAllLinesByNumberAndLetter");
-    Route::get("buseslines/all/id/{id}",            "BusesLineController@getAllLinesById");
-    
-    
-    
-//});
+    //www.example.com/api/buseslines
+    Route::prefix('buseslines')->group(function () 
+    {
+        //www.example.com/api/buseslines/all
+        Route::prefix('all')->group(function () 
+        {
+            //www.example.com/api/buseslines/all/id
+            Route::prefix('id')->group(function () 
+            {
+                //www.example.com/api/buseslines/all/id/{7}
+               Route::get("{id}",         "BusesLineController@getAllLinesById");
+            });
+            
+            //www.example.com/api/buseslines/all
+            Route::get("",                   "BusesLineController@getAllLines");
+            //www.example.com/api/buseslines/all/{6}
+            Route::get("{number}",           "BusesLineController@getAllLinesByNumber");
+            //www.example.com/api/buseslines/all/{6}/{A}
+            Route::get("{number}/{letter}",  "BusesLineController@getAllLinesByNumberAndLetter");
+            
+            
+            
+        });
+        //www.example.com/api/buseslines/id/
+        Route::prefix('id')->group(function () 
+        {
+            //www.example.com/api/buseslines/id/{7}
+            Route::get("{id}",               "BusesLineController@getLinesById");
+        });
+        
+        //www.example.com/api/buseslines/
+        Route::get("",                       "BusesLineController@getLines");
+        //www.example.com/api/buseslines/{6}
+        Route::get("{number}",               "BusesLineController@getLinesByNumber");
+        //www.example.com/api/buseslines/{6}/{A}
+        Route::get("{number}/{letter}",      "BusesLineController@getLinesByNumberAndLetter");
+        
+    });
