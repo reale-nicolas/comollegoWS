@@ -1,6 +1,8 @@
 <?php
 
-use App\BusesLine;
+use App\Models\BusesLine;
+use App\XML\CollectionBusLine;
+use App\XML\ControllerBusLine;
 use App\XML\xmlBusFileParser;
 use Illuminate\Database\Seeder;
 
@@ -16,12 +18,11 @@ class BusesLinesSeeder extends Seeder
         echo "\n\n\n";
         echo "\n Iniciando volcado de datos tabla BUSESLINES...";
         
-        $parserXML = xmlBusFileParser::getInstance();
-        $arrBuses = $parserXML->getBuses();
+        $busesController =  ControllerBusLine::getInstance();
         
-        foreach ($arrBuses as $a) {
-        foreach ($a as $busLine) {
-//            var_dump($busLine);
+        $busesLines = $busesController->getBusesCollector()->getCollection();
+        
+        foreach ($busesLines as $busLine) {
             $linea  = $busLine->getLinea();
             $ramal  = $busLine->getRamal();
             $zona   = $busLine->getZona();
@@ -32,14 +33,15 @@ class BusesLinesSeeder extends Seeder
                 "letter"    => $ramal,
                 "zone"      => $zona
             ]);
-            $busLine->id = $res->id;
             
-//            $arrRecorridosWithId[] = $recorrido;
-        }}
-//        $parserXML->setBusStop($arrRecorridosWithId);
+            if ($res) {
+                $busLine->id = $res->id;
+            }
+            $nBusCollector = $busesController->getBusesCollector()->saveBusLine($busLine);
+            $busesController->setBusesCollector($nBusCollector);
+        }
         
         echo "\n ...Finalizando volcado de datos tabla BUSESLINES";
         echo "\n\n\n";
-        $this->call(BusesLineStopsSeeder::class);
     }
 }
