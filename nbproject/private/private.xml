@@ -3,17 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Models/BusesLineStop.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Interfaces/BusesLineInterface.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Http/Controllers/BusesLineController.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Repositories/BaseRepository.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Models/BusesLine.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Services/BusesLineService.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Repositories/BusesLineRouteRepository.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Repositories/BusesLineStopRepository.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/ApiResponses/getLinesResponse.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Repositories/BusesLineRepository.php</file>
-            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/app/Interfaces/BusesLineStopInterface.php</file>
+            <file>file:/C:/Users/nicor/proyectosWeb/comollegoWS/resources/xmlBusRoute/recorrido_5A_Sansone.kml</file>
         </group>
     </open-files>
 </project-private>
