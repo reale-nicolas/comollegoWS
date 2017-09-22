@@ -32,7 +32,6 @@
       </Pair>
     </StyleMap>
     <Folder>
-        <Folder>
         <name>Linea</name>
         <value>6</value>
     </Folder>
@@ -44,6 +43,7 @@
         <name>Zona</name>
         <value></value>
     </Folder>
+    <Folder>
       <name>Recorrido</name>
       <Placemark>
         <name>Línea 1</name>
