@@ -23,7 +23,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetLinesCallback');
     }
     
     
@@ -33,7 +33,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetLinesByNumberCallback');
     }
     
     
@@ -43,7 +43,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetLinesByNumberAndLetterCallback');
     }
     
     
@@ -53,7 +53,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetLinesByIdCallback');
     }
         
     
@@ -63,7 +63,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetAllLinesCallback');
     }
     
     
@@ -73,7 +73,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetAllLinesByNumberCallback');
     }
     
     
@@ -83,7 +83,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetAllLinesByNumberAndLetterCallback');
     }
     
     
@@ -93,6 +93,6 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPGetLinesCallback');
+                ->withCallback('JSONPgetAllLinesByIdCallback');
     }
 }
