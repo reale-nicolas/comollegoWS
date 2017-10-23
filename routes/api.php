@@ -20,6 +20,15 @@ use Illuminate\Http\Request;
     });
 
 
+    //www.example.com/api/route
+    Route::prefix('route')->group(function () 
+    {
+        //www.example.com/api/route
+        Route::get("{from}/{to}/{distance}","OptimalRouteController@index");
+        
+    });
+    
+    
     //www.example.com/api/buseslines
     Route::prefix('buseslines')->group(function () 
     {
@@ -52,6 +61,9 @@ use Illuminate\Http\Request;
         
         //www.example.com/api/buseslines/
         Route::get("",                       "BusesLineController@getLines");
+//                ->middleware('auth.basic');
+
+        
         //www.example.com/api/buseslines/{6}
         Route::get("{number}",               "BusesLineController@getLinesByNumber");
         //www.example.com/api/buseslines/{6}/{A}

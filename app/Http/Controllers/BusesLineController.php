@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\BusesLineService;
-use Illuminate\Routing\Controller;
 
 class BusesLineController extends Controller
 {
@@ -83,7 +82,7 @@ class BusesLineController extends Controller
         
         return  response()
                 ->json($arrLines, 200)
-                ->withCallback('JSONPgetAllLinesByNumberAndLetterCallback');
+                ->withCallback('onCompleteGetCorredorRamalAllAjaxRequest');
     }
     
     
