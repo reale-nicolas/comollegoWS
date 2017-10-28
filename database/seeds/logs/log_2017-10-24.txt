@@ -1,0 +1,1 @@
+[2017-10-24 4:12:55.095654] [info] Iniciando volcado de datos tabla BUSESLINES

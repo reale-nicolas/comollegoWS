@@ -2,6 +2,7 @@
 
 namespace App\XML;
 
+use Katzgrau\KLogger\Logger;
 use const PATH_BUS_STOP_FOLDER;
 
 define("PATH_BUS_STOP_FOLDER", __DIR__."/../../resources/xmlBusStop/");
@@ -44,11 +45,15 @@ class xmlBusStopFileParser
      */
     protected function setUpBusStops()
     {
+        $logger = new Logger('storage/logs');
+        $logger->info('Obteniendo busesStops from XML. Leyendo '.PATH_BUS_STOP_FOLDER);
+        
         $arrBusStop = array();
         $arrFiles = scandir(PATH_BUS_STOP_FOLDER);
         
         foreach ($arrFiles as $fileName) {
             if (is_file(PATH_BUS_STOP_FOLDER.$fileName)) {
+                $logger->info('Obteniendo busesStops from '.$fileName);
                 $arrBusStop[] = $this->getBusStopByFilename($fileName);
             }
         }
@@ -83,6 +88,8 @@ class xmlBusStopFileParser
             }
             elseif(strtoupper($node->name) == "PARADAS") {
                 $order = 10;
+                $logger = new Logger('storage/logs');
+                $logger->info('Leyendo '.count($node->Placemark). 'paradas.');
                 foreach($node->Placemark as $busStop) {
                     $coordBusStop = explode(",", $busStop->Point->coordinates);
                     $busStop->latitud    = (double)$coordBusStop[1];
