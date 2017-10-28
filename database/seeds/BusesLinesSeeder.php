@@ -1,10 +1,9 @@
 <?php
 
 use App\Models\BusesLine;
-use App\XML\CollectionBusLine;
 use App\XML\ControllerBusLine;
-use App\XML\xmlBusFileParser;
 use Illuminate\Database\Seeder;
+use Katzgrau\KLogger\Logger;
 
 class BusesLinesSeeder extends Seeder
 {
@@ -18,6 +17,9 @@ class BusesLinesSeeder extends Seeder
         echo "\n\n\n";
         echo "\n Iniciando volcado de datos tabla BUSESLINES...";
         
+        $logger = new Logger('storage/logs');
+        $logger->info('Iniciando volcado de datos tabla BUSESLINES');
+        
         $busesController =  ControllerBusLine::getInstance();
         
         $busesLines = $busesController->getBusesCollector()->getCollection();
@@ -28,6 +30,7 @@ class BusesLinesSeeder extends Seeder
             $zona   = $busLine->getZona();
             
             echo "\n importando linea: ".$linea.$ramal." - ".$zona;
+            $logger->info("importando linea: ".$linea.$ramal." - ".$zona);
             $res = BusesLine::create([
                 "number"    => $linea,
                 "letter"    => $ramal,
